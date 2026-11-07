@@ -3,13 +3,97 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TITLE</title>
+  <title>Задать вопрос — Вопросы и ответы</title>
   <link rel="icon" href="static/img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="static/css/bootstrap.min.css">
   <link rel="stylesheet" href="static/css/style.css">
 </head>
 <body>
-  <!-- TODO: верстка страницы -->
+
+  <!-- Header: логотип, поиск, юзерблок, кнопка создания вопроса -->
+  <header class="border-bottom bg-white py-2">
+    <div class="container d-flex flex-wrap align-items-center gap-2">
+      <a href="index.html" class="navbar-brand fw-bold text-primary me-2">Вопросы</a>
+      <form class="flex-grow-1 d-flex" role="search">
+        <input class="form-control search-input w-100" type="search" placeholder="Поиск" aria-label="Поиск">
+      </form>
+      <a href="ask.html" class="btn btn-primary">Задать вопрос</a>
+      <!-- Неавторизованный пользователь -->
+      <div class="d-flex gap-2">
+        <a href="login.html" class="btn btn-outline-secondary">Войти</a>
+        <a href="signup.html" class="btn btn-outline-primary">Регистрация</a>
+      </div>
+      <!-- Для авторизованного: заменить блок выше на аватар и ник, профиль: profile.html -->
+    </div>
+  </header>
+
+  <div class="container py-4">
+    <div class="row g-4">
+
+      <!-- Основная колонка -->
+      <main class="col-lg-9 page-content">
+        
+        <div class="card">
+          <div class="card-body">
+            <h1 class="h4 mb-4">Задать вопрос</h1>
+            <form novalidate>
+              <div class="mb-3">
+                <label for="title" class="form-label">Заголовок</label>
+                <input id="title" type="text" class="form-control is-invalid" maxlength="150" aria-describedby="titleHelp titleError">
+                <div id="titleHelp" class="form-text">Кратко опишите суть вопроса. До 150 символов.</div>
+                <div id="titleError" class="invalid-feedback">Заголовок не может быть пустым.</div>
+              </div>
+              <div class="mb-3">
+                <label for="body" class="form-label">Текст вопроса</label>
+                <textarea id="body" class="form-control" rows="8" maxlength="5000" aria-describedby="bodyHelp"></textarea>
+                <div id="bodyHelp" class="form-text">Опишите задачу, что уже пробовали и что получилось. До 5000 символов.</div>
+              </div>
+              <div class="mb-4">
+                <label for="tags" class="form-label">Теги</label>
+                <input id="tags" type="text" class="form-control" placeholder="python list" aria-describedby="tagsHelp">
+                <div id="tagsHelp" class="form-text">Через пробел, не более 3 тегов.</div>
+              </div>
+              <button type="submit" class="btn btn-primary">Опубликовать</button>
+            </form>
+          </div>
+        </div>
+
+      </main>
+
+      <!-- Правая колонка: Popular tags и Best members -->
+      <aside class="col-lg-3">
+        <div class="card sidebar-block">
+          <div class="card-header bg-white fw-semibold">Популярные теги</div>
+          <div class="card-body d-flex flex-wrap gap-2">
+            <a href="#" class="badge text-bg-light text-decoration-none">python</a>
+            <a href="#" class="badge text-bg-light text-decoration-none">javascript</a>
+            <a href="#" class="badge text-bg-light text-decoration-none">django</a>
+            <a href="#" class="badge text-bg-light text-decoration-none">html</a>
+          </div>
+        </div>
+        <div class="card sidebar-block">
+          <div class="card-header bg-white fw-semibold">Лучшие участники</div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex align-items-center gap-2">
+              <img class="avatar" src="static/img/avatar-placeholder.svg" alt="">
+              <span>Участник 1</span>
+            </li>
+            <li class="list-group-item d-flex align-items-center gap-2">
+              <img class="avatar" src="static/img/avatar-placeholder.svg" alt="">
+              <span>Участник 2</span>
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- Footer: прибит к низу viewport -->
+  <footer class="site-footer border-top bg-white py-3 text-center text-secondary small">
+    © 2026 Вопросы и ответы
+  </footer>
+
   <script src="static/js/bootstrap.bundle.min.js"></script>
   <script src="static/js/main.js"></script>
 </body>
